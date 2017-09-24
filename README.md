@@ -10,13 +10,15 @@ Open up two command prompts. Activate iPython in each.
 
 In your first python interpreter, create a server socket and prepare it for connections:
 
-```In [1]: server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM, socket.IPPROTO_IP)```
+```In [1]: import socket```
 
-```In [2]: server_socket.bind(('127.0.0.1', 50000))```
+```In [2]: server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM, socket.IPPROTO_IP)```
 
-```In [3]: server_socket.listen(1)```
+```In [3]: server_socket.bind(('127.0.0.1', 50000))```
 
-```In [4]: conn, addr = server_socket.accept()```
+```In [4]: server_socket.listen(1)```
+
+```In [5]: conn, addr = server_socket.accept()```
 
 At this point, you should not get back a prompt. The server socket is waiting for a connection to be made.
 
@@ -44,17 +46,17 @@ When you’re ready, type the following in the client interpreter:
 
 Back in your server interpreter, go ahead and receive the message from your client:
 
-```In [5]: msg = conn.recv(4096)```
+```In [6]: msg = conn.recv(4096)```
 
-```In [6]: msg```
+```In [7]: msg```
 
-```Out[7]: b'Hey, can you hear me?'```
+```Out[8]: b'Hey, can you hear me?'```
 
 Send a message back, and then close up your connection:
 
-```In [8]: conn.sendall('Yes, I can hear you.'.encode('utf8'))```
+```In [9]: conn.sendall('Yes, I can hear you.'.encode('utf8'))```
 
-```In [9]: conn.close()```
+```In [10]: conn.close()```
 
 ### Finish Up
 
@@ -70,6 +72,6 @@ Back in your client interpreter, take a look at the response to your message, th
 
 And now that we’re done, we can close up the server socket too (back in the server interpreter):
 
-```In [10]: server_socket.close()```
+```In [11]: server_socket.close()```
 
 You’ve just run your first client-server interaction!
