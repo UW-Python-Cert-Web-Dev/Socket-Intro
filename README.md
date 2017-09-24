@@ -1,8 +1,10 @@
 ## Welcome to the Intro to Sockets!
 
-First, go through the Socket-Intro.ipynb
+First, go through the Socket-Intro.ipynb.
 
-Then, go through the steps outlined below.
+Then, go through the steps outlined below to create a server client interaction with Python sockets.
+
+### Get ready
 
 Open up two command prompts. Activate iPython in each.
 
